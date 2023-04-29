@@ -14,7 +14,7 @@ class Character with _$Character {
     @JsonKey(name: "images") required CharacterImage characterImage,
     @Default(Gender.male) Gender gender,
     required String species,
-    required String homePlanet,
+    String? homePlanet,
     required String occupation,
     required List<String> sayings,
   }) = _Character;

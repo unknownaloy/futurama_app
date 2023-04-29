@@ -26,7 +26,7 @@ mixin _$Character {
   CharacterImage get characterImage => throw _privateConstructorUsedError;
   Gender get gender => throw _privateConstructorUsedError;
   String get species => throw _privateConstructorUsedError;
-  String get homePlanet => throw _privateConstructorUsedError;
+  String? get homePlanet => throw _privateConstructorUsedError;
   String get occupation => throw _privateConstructorUsedError;
   List<String> get sayings => throw _privateConstructorUsedError;
 
@@ -46,7 +46,7 @@ abstract class $CharacterCopyWith<$Res> {
       @JsonKey(name: "images") CharacterImage characterImage,
       Gender gender,
       String species,
-      String homePlanet,
+      String? homePlanet,
       String occupation,
       List<String> sayings});
 
@@ -71,7 +71,7 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
     Object? characterImage = null,
     Object? gender = null,
     Object? species = null,
-    Object? homePlanet = null,
+    Object? homePlanet = freezed,
     Object? occupation = null,
     Object? sayings = null,
   }) {
@@ -92,10 +92,10 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
           ? _value.species
           : species // ignore: cast_nullable_to_non_nullable
               as String,
-      homePlanet: null == homePlanet
+      homePlanet: freezed == homePlanet
           ? _value.homePlanet
           : homePlanet // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       occupation: null == occupation
           ? _value.occupation
           : occupation // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ abstract class _$$_CharacterCopyWith<$Res> implements $CharacterCopyWith<$Res> {
       @JsonKey(name: "images") CharacterImage characterImage,
       Gender gender,
       String species,
-      String homePlanet,
+      String? homePlanet,
       String occupation,
       List<String> sayings});
 
@@ -161,7 +161,7 @@ class __$$_CharacterCopyWithImpl<$Res>
     Object? characterImage = null,
     Object? gender = null,
     Object? species = null,
-    Object? homePlanet = null,
+    Object? homePlanet = freezed,
     Object? occupation = null,
     Object? sayings = null,
   }) {
@@ -182,10 +182,10 @@ class __$$_CharacterCopyWithImpl<$Res>
           ? _value.species
           : species // ignore: cast_nullable_to_non_nullable
               as String,
-      homePlanet: null == homePlanet
+      homePlanet: freezed == homePlanet
           ? _value.homePlanet
           : homePlanet // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       occupation: null == occupation
           ? _value.occupation
           : occupation // ignore: cast_nullable_to_non_nullable
@@ -207,7 +207,7 @@ class _$_Character implements _Character {
       @JsonKey(name: "images") required this.characterImage,
       this.gender = Gender.male,
       required this.species,
-      required this.homePlanet,
+      this.homePlanet,
       required this.occupation,
       required final List<String> sayings})
       : _sayings = sayings;
@@ -227,7 +227,7 @@ class _$_Character implements _Character {
   @override
   final String species;
   @override
-  final String homePlanet;
+  final String? homePlanet;
   @override
   final String occupation;
   final List<String> _sayings;
@@ -293,7 +293,7 @@ abstract class _Character implements Character {
       @JsonKey(name: "images") required final CharacterImage characterImage,
       final Gender gender,
       required final String species,
-      required final String homePlanet,
+      final String? homePlanet,
       required final String occupation,
       required final List<String> sayings}) = _$_Character;
 
@@ -311,7 +311,7 @@ abstract class _Character implements Character {
   @override
   String get species;
   @override
-  String get homePlanet;
+  String? get homePlanet;
   @override
   String get occupation;
   @override

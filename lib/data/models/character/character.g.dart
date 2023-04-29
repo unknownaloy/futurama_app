@@ -14,7 +14,7 @@ _$_Character _$$_CharacterFromJson(Map<String, dynamic> json) => _$_Character(
       gender:
           $enumDecodeNullable(_$GenderEnumMap, json['gender']) ?? Gender.male,
       species: json['species'] as String,
-      homePlanet: json['homePlanet'] as String,
+      homePlanet: json['homePlanet'] as String?,
       occupation: json['occupation'] as String,
       sayings:
           (json['sayings'] as List<dynamic>).map((e) => e as String).toList(),
