@@ -8,7 +8,10 @@ import 'package:futurama_app/utilities/failure.dart';
 import 'package:http/http.dart' as http;
 
 class ApiServices {
-  final http.Client _client = http.Client();
+
+  final http.Client _client;
+
+  ApiServices({required http.Client client}) : _client = client;
 
   final Duration _timeOutDuration = const Duration(seconds: 60);
 
