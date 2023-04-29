@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_app/presentation/home/home_screen.dart';
+import 'package:futurama_app/presentation/futurama_home.dart';
 import 'package:futurama_app/presentation/home/home_view_model.dart';
 import 'package:futurama_app/repositories/api_services.dart';
 import 'package:futurama_app/themes/light_theme/light_theme.dart';
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         theme: lightTheme(),
         darkTheme: ThemeData.dark(),
         themeMode: ThemeMode.light,
-        home: const HomeScreen(),
+        home: const FuturamaHome(),
       ),
     );
   }
