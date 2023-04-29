@@ -150,9 +150,6 @@ class CharactersFullScreen extends StatelessWidget {
                                 ],
                               ),
 
-
-
-
                               /// Home Planet
                               character.homePlanet != null
                                   ? TableRow(
@@ -163,25 +160,28 @@ class CharactersFullScreen extends StatelessWidget {
                                               .textTheme
                                               .bodyMedium,
                                         ),
-                                        Chip(
-                                          label: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Text(
-                                                character.homePlanet!,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium
-                                                    ?.copyWith(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                    ),
-                                              ),
-                                              const SizedBox(
-                                                width: 10,
-                                              ),
-                                              const Icon(Icons.language),
-                                            ],
+                                        Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Chip(
+                                            label: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  character.homePlanet!,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyMedium
+                                                      ?.copyWith(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                const Icon(Icons.language),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -192,62 +192,66 @@ class CharactersFullScreen extends StatelessWidget {
                                         SizedBox.shrink(),
                                       ],
                                     ),
-
-
-
                             ],
                           ),
 
                           /// Occupation
-                          character.occupation.isNotEmpty ? Row(
-                            children: [
-                              Text(
-                                "Occupation",
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(character.occupation),
-                                      ),
-                                    );
-                                  },
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Chip(
-                                      label: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Flexible(
-                                            child: Text(
-                                              character.occupation,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium
-                                                  ?.copyWith(
-                                                    fontWeight: FontWeight.w600,
+                          character.occupation.isNotEmpty
+                              ? Row(
+                                  children: [
+                                    Text(
+                                      "Occupation",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content:
+                                                  Text(character.occupation),
+                                            ),
+                                          );
+                                        },
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Chip(
+                                            label: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Flexible(
+                                                  child: Text(
+                                                    character.occupation,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium
+                                                        ?.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
                                                   ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                const Icon(
+                                                  Icons.construction_outlined,
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          const Icon(
-                                            Icons.construction_outlined,
-                                          ),
-                                        ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ) : const SizedBox.shrink(),
+                                  ],
+                                )
+                              : const SizedBox.shrink(),
 
                           /// Saying
                           SayingsPanel(sayings: character.sayings),
