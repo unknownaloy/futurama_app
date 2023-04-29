@@ -18,6 +18,11 @@ ThemeData lightTheme() {
     ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: kLightTextTheme,
+    iconButtonTheme: IconButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.orangeAccent)
+      )
+    )
     // iconTheme: const IconThemeData(color: kWhiteColor),
     // textButtonTheme: kTextButtonThemeData(),
     // bottomSheetTheme: kBottomSheetTheme(),

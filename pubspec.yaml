@@ -40,6 +40,7 @@ dependencies:
 
 #  Network
   http: ^0.13.5
+  url_launcher: ^6.1.10
 
 #  UI
   responsive_framework: ^1.0.0

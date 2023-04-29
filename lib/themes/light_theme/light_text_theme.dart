@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:futurama_app/themes/light_theme/light_theme_text_styles.dart';
 
 final TextTheme kLightTextTheme = TextTheme(
-  displaySmall: kLightDisplaySmallTextStyle,
-  displayMedium: kLightDisplaySmallTextStyle,
-  displayLarge: kLightDisplaySmallTextStyle,
-  bodySmall: kLightDisplaySmallTextStyle,
-  bodyMedium: kLightDisplaySmallTextStyle,
-  bodyLarge: kLightDisplaySmallTextStyle,
-  titleSmall: kLightDisplaySmallTextStyle,
-  titleMedium: kLightDisplaySmallTextStyle,
-  titleLarge: kLightDisplaySmallTextStyle,
-  labelSmall: kLightDisplaySmallTextStyle,
-  labelMedium: kLightDisplaySmallTextStyle,
-  labelLarge: kLightDisplaySmallTextStyle,
+  displaySmall: kLightDisplayLargeTextStyle,
+  displayMedium: kLightDisplayMediumTextStyle, // Implemented
+  displayLarge: kLightDisplayLargeTextStyle, // Implemented
+  bodySmall: kLightDisplayLargeTextStyle,
+  bodyMedium: kLightBodyMediumTextStyle,
+  bodyLarge: kLightDisplayLargeTextStyle,
+  titleSmall: kLightDisplayLargeTextStyle,
+  titleMedium: kLightDisplayLargeTextStyle,
+  titleLarge: kLightTitleLargeTextStyle, // Implemented
+  labelSmall: kLightLabelSmallTextStyle, // Implemented
+  labelMedium: kLightDisplayLargeTextStyle,
+  labelLarge: kLightDisplayLargeTextStyle,
 );

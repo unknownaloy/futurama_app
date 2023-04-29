@@ -29,7 +29,11 @@ class ApiServices {
       if (response.statusCode >= 200 && response.statusCode <= 304) {
         final decodedData = jsonDecode(response.body);
 
-        InfoModel info = InfoModel.fromJson(decodedData);
+        debugPrint("ApiService - getInfo -- decodedData -> $decodedData");
+
+        InfoModel info = InfoModel.fromJson(decodedData[0]);
+
+        debugPrint("ApiService - getInfo -- info -> ${info.toJson()}");
         return info;
       } else {
         throw Failure("Couldn't get data. Please try again");

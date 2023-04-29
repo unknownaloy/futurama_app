@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_app/data/enums/request_state.dart';
 import 'package:futurama_app/presentation/home/home_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,47 +24,130 @@ class _HomeScreenState extends State<HomeScreen> {
       // appBar: AppBar(),
       body: SafeArea(
         child: Consumer<HomeViewModel>(
-          builder: (_, model, __) {
-            if (model.requestState == RequestState.loading ||
-                model.requestState == RequestState.idle) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+          builder: (_, model, __) => model.requestState.maybeWhen(
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            error: (message) => Center(
+              child: Text(message),
+            ),
+            orElse: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            success: (data) => SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0, vertical: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      "Hello there 👋🏿",
+                      style: Theme.of(context).textTheme.displayLarge,
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    Text(
+                      data!.synopsis,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            height: 1.5,
+                          ),
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
 
-            return LayoutBuilder(
-              builder: (context, constraints) => SingleChildScrollView(
-                child: SingleChildScrollView(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minWidth: constraints.maxWidth,
-                      minHeight: constraints.maxHeight,
+
+                    /// Year
+                    Text(
+                      "Year",
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 24.0,
-                        right: 24.0,
-                        bottom: 45.0,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            "Hello there 👋🏿",
-                            style: Theme.of(context).textTheme.displayLarge,
-                          )
-                        ],
+
+                    const SizedBox(height: 8,),
+
+
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Chip(
+                        label: Text(
+                          data.yearsAired,
+                          style: Theme.of(context).textTheme.labelSmall,
+                        ),
                       ),
                     ),
-                  ),
+
+                    const SizedBox(height: 32,),
+
+
+                    /// Creators
+                    Text(
+                      "Creators",
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+
+                    Wrap(
+                      spacing: 8.0, // gap between adjacent chips
+                      runSpacing: 4.0, // gap between lines
+                      children: [
+                        ...data.creators.map(
+                          (creator) => GestureDetector(
+                            onTap: () {
+                              // Handle url launcher here
+                              _launchUrl(creator.url);
+                            },
+                            child: Chip(
+                              label: Text(
+                                creator.name,
+                                style: Theme.of(context).textTheme.labelSmall,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            );
-          },
+            ),
+          ),
         ),
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category),
+            label: "Characters",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.quiz),
+            label: "Quiz",
+          ),
+        ],
+      ),
     );
+  }
+}
+
+Future<void> _launchUrl(String url) async {
+  final Uri uri = Uri.parse(url);
+
+
+  try {
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch');
+    }
+  } catch (err) {
+    // Handle error
+    print("ERR => $err");
   }
 }
