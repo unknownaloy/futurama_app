@@ -5,6 +5,6 @@ final _baseFont = GoogleFonts.lexend();
 
 final kLightDisplaySmallTextStyle = _baseFont.copyWith(
   color: Colors.black,
-  fontSize: 20,
+  fontSize: 24,
   fontWeight: FontWeight.w700,
 );

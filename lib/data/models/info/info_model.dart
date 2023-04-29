@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:futurama_app/models/info/creator/creator.dart';
+import 'package:futurama_app/data/models/info/creator/creator.dart';
 
 part 'info_model.freezed.dart';
 part 'info_model.g.dart';

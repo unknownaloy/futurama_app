@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_app/screens/home_screen.dart';
+import 'package:futurama_app/presentation/home/home_screen.dart';
 import 'package:futurama_app/themes/light_theme/light_theme.dart';
 
 void main() {

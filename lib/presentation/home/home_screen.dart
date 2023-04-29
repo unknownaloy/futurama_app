@@ -27,7 +27,10 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text("Hello there 👋🏿")
+                      Text(
+                        "Hello there 👋🏿",
+                        style: Theme.of(context).textTheme.displayLarge,
+                      )
                     ],
                   ),
                 ),
