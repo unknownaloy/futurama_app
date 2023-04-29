@@ -10,6 +10,7 @@ part 'character.g.dart';
 class Character with _$Character {
   @JsonSerializable(explicitToJson: true)
   factory Character({
+    required int id,
     @JsonKey(name: "name") required CharacterName characterName,
     @JsonKey(name: "images") required CharacterImage characterImage,
     @Default(Gender.male) Gender gender,

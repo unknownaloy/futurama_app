@@ -24,6 +24,11 @@ final kLightTitleLargeTextStyle = _baseFont.copyWith(
 );
 
 /// Body text styles
+final kLightBodySmallTextStyle = _baseFont.copyWith(
+  color: Colors.black,
+  fontSize: 14,
+);
+
 final kLightBodyMediumTextStyle = _baseFont.copyWith(
   color: Colors.black,
   fontSize: 16,

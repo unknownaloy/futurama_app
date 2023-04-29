@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_app/presentation/characters/characters_view_model.dart';
 import 'package:futurama_app/presentation/characters/components/character_card.dart';
+import 'package:futurama_app/presentation/characters/screens/characters_full_screen.dart';
 import 'package:provider/provider.dart';
 
 class CharactersScreen extends StatefulWidget {
@@ -49,9 +50,19 @@ class _CharactersScreenState extends State<CharactersScreen>
                   (BuildContext context, int index) {
                     final character = characters[index];
                     return CharacterCard(
+                      id: character.id,
                       imageUrl: character.characterImage.image,
                       fullName:
                           "${character.characterName.first} ${character.characterName.middle} ${character.characterName.last}",
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                CharactersFullScreen(character: character),
+                          ),
+                        );
+                      },
                     );
                   },
                   childCount: characters.length,

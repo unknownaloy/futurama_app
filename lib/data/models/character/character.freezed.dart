@@ -20,6 +20,7 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Character {
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "name")
   CharacterName get characterName => throw _privateConstructorUsedError;
   @JsonKey(name: "images")
@@ -42,7 +43,8 @@ abstract class $CharacterCopyWith<$Res> {
       _$CharacterCopyWithImpl<$Res, Character>;
   @useResult
   $Res call(
-      {@JsonKey(name: "name") CharacterName characterName,
+      {int id,
+      @JsonKey(name: "name") CharacterName characterName,
       @JsonKey(name: "images") CharacterImage characterImage,
       Gender gender,
       String species,
@@ -67,6 +69,7 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? characterName = null,
     Object? characterImage = null,
     Object? gender = null,
@@ -76,6 +79,10 @@ class _$CharacterCopyWithImpl<$Res, $Val extends Character>
     Object? sayings = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       characterName: null == characterName
           ? _value.characterName
           : characterName // ignore: cast_nullable_to_non_nullable
@@ -132,7 +139,8 @@ abstract class _$$_CharacterCopyWith<$Res> implements $CharacterCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "name") CharacterName characterName,
+      {int id,
+      @JsonKey(name: "name") CharacterName characterName,
       @JsonKey(name: "images") CharacterImage characterImage,
       Gender gender,
       String species,
@@ -157,6 +165,7 @@ class __$$_CharacterCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? characterName = null,
     Object? characterImage = null,
     Object? gender = null,
@@ -166,6 +175,10 @@ class __$$_CharacterCopyWithImpl<$Res>
     Object? sayings = null,
   }) {
     return _then(_$_Character(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       characterName: null == characterName
           ? _value.characterName
           : characterName // ignore: cast_nullable_to_non_nullable
@@ -203,7 +216,8 @@ class __$$_CharacterCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_Character implements _Character {
   _$_Character(
-      {@JsonKey(name: "name") required this.characterName,
+      {required this.id,
+      @JsonKey(name: "name") required this.characterName,
       @JsonKey(name: "images") required this.characterImage,
       this.gender = Gender.male,
       required this.species,
@@ -215,6 +229,8 @@ class _$_Character implements _Character {
   factory _$_Character.fromJson(Map<String, dynamic> json) =>
       _$$_CharacterFromJson(json);
 
+  @override
+  final int id;
   @override
   @JsonKey(name: "name")
   final CharacterName characterName;
@@ -240,7 +256,7 @@ class _$_Character implements _Character {
 
   @override
   String toString() {
-    return 'Character(characterName: $characterName, characterImage: $characterImage, gender: $gender, species: $species, homePlanet: $homePlanet, occupation: $occupation, sayings: $sayings)';
+    return 'Character(id: $id, characterName: $characterName, characterImage: $characterImage, gender: $gender, species: $species, homePlanet: $homePlanet, occupation: $occupation, sayings: $sayings)';
   }
 
   @override
@@ -248,6 +264,7 @@ class _$_Character implements _Character {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Character &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.characterName, characterName) ||
                 other.characterName == characterName) &&
             (identical(other.characterImage, characterImage) ||
@@ -265,6 +282,7 @@ class _$_Character implements _Character {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       characterName,
       characterImage,
       gender,
@@ -289,7 +307,8 @@ class _$_Character implements _Character {
 
 abstract class _Character implements Character {
   factory _Character(
-      {@JsonKey(name: "name") required final CharacterName characterName,
+      {required final int id,
+      @JsonKey(name: "name") required final CharacterName characterName,
       @JsonKey(name: "images") required final CharacterImage characterImage,
       final Gender gender,
       required final String species,
@@ -300,6 +319,8 @@ abstract class _Character implements Character {
   factory _Character.fromJson(Map<String, dynamic> json) =
       _$_Character.fromJson;
 
+  @override
+  int get id;
   @override
   @JsonKey(name: "name")
   CharacterName get characterName;

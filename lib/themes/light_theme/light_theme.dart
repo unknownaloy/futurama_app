@@ -6,13 +6,10 @@ ThemeData lightTheme() {
     appBarTheme: const AppBarTheme(
       color: Color(0xffEDF0F5),
       elevation: 0.0,
+      iconTheme: IconThemeData(
+        color: Colors.black,
+      )
       //backgroundColor: kAppbarColor,
-      //iconTheme: IconThemeData(color: kWhiteColor),
-      // systemOverlayStyle: SystemUiOverlayStyle(
-      //   statusBarColor: Color(0xffEDF0F5),
-      //   // statusBarIconBrightness: Brightness.dark,
-      //   // statusBarBrightness: Brightness.light,
-      // ),
     ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: kLightTextTheme,

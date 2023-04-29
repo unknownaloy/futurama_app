@@ -7,6 +7,7 @@ part of 'character.dart';
 // **************************************************************************
 
 _$_Character _$$_CharacterFromJson(Map<String, dynamic> json) => _$_Character(
+      id: json['id'] as int,
       characterName:
           CharacterName.fromJson(json['name'] as Map<String, dynamic>),
       characterImage:
@@ -22,6 +23,7 @@ _$_Character _$$_CharacterFromJson(Map<String, dynamic> json) => _$_Character(
 
 Map<String, dynamic> _$$_CharacterToJson(_$_Character instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.characterName.toJson(),
       'images': instance.characterImage.toJson(),
       'gender': _$GenderEnumMap[instance.gender]!,

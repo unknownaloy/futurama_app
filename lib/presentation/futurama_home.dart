@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_app/presentation/characters/characters_screen.dart';
+import 'package:futurama_app/presentation/characters/screens/characters_screen.dart';
 import 'package:futurama_app/presentation/home/home_screen.dart';
 
 class FuturamaHome extends StatefulWidget {
