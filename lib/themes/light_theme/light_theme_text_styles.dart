@@ -16,7 +16,6 @@ final kLightDisplayLargeTextStyle = _baseFont.copyWith(
   fontWeight: FontWeight.w700,
 );
 
-
 /// Title text styles
 final kLightTitleLargeTextStyle = _baseFont.copyWith(
   color: Colors.black,
@@ -24,11 +23,16 @@ final kLightTitleLargeTextStyle = _baseFont.copyWith(
   fontWeight: FontWeight.w600,
 );
 
-
 /// Body text styles
 final kLightBodyMediumTextStyle = _baseFont.copyWith(
   color: Colors.black,
   fontSize: 16,
+);
+
+final kLightBodyLargeTextStyle = _baseFont.copyWith(
+  color: Colors.black,
+  fontSize: 18,
+  fontWeight: FontWeight.w600,
 );
 
 /// Label text styles

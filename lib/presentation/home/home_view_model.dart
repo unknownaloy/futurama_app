@@ -17,9 +17,9 @@ class HomeViewModel extends ChangeNotifier {
     try {
       _requestState = const RequestState.idle();
 
-      final infoData = await _apiServices.getInfo();
+      final data = await _apiServices.getInfo();
 
-      _requestState = RequestState<InfoModel>.success(infoData);
+      _requestState = RequestState<InfoModel>.success(data);
     } on Failure catch (err) {
       _requestState = RequestState.error(message: err.message);
     } finally {

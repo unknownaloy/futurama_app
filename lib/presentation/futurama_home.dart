@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futurama_app/presentation/characters/characters_screen.dart';
 import 'package:futurama_app/presentation/home/home_screen.dart';
 
 class FuturamaHome extends StatefulWidget {
@@ -15,7 +16,7 @@ class _FuturamaHomeState extends State<FuturamaHome> {
 
   final List<Widget> _widgetOptions = [
     const HomeScreen(),
-    Container(color: Colors.orangeAccent),
+    const CharactersScreen(),
     Container(color: Colors.purpleAccent),
   ];
 

@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:futurama_app/data/models/character/character_name.dart';
 
 part 'character_image.freezed.dart';
 part 'character_image.g.dart';

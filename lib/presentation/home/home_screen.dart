@@ -124,6 +124,8 @@ class _HomeScreenState extends State<HomeScreen>
   bool get wantKeepAlive => true;
 }
 
+
+// TODO: Move to a util class
 Future<void> _launchUrl(String url) async {
   final Uri uri = Uri.parse(url);
 

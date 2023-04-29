@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futurama_app/presentation/characters/characters_view_model.dart';
 import 'package:futurama_app/presentation/futurama_home.dart';
 import 'package:futurama_app/presentation/home/home_view_model.dart';
 import 'package:futurama_app/repositories/api_services.dart';
@@ -23,6 +24,11 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<HomeViewModel>(
           create: (_) => HomeViewModel(
+            apiServices: locator<ApiServices>(),
+          ),
+        ),
+        ChangeNotifierProvider<CharactersViewModel>(
+          create: (_) => CharactersViewModel(
             apiServices: locator<ApiServices>(),
           ),
         ),
