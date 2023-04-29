@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen>
                     height: 24,
                   ),
                   Text(
-                    data!.synopsis,
+                    data.synopsis,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           height: 1.5,
                         ),

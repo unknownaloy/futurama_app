@@ -41,7 +41,6 @@ class _FuturamaHomeState extends State<FuturamaHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _pageController,
