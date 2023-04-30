@@ -8,9 +8,9 @@ class Question with _$Question {
   @JsonSerializable(explicitToJson: true)
   factory Question({
     required int id,
-    required String question,
-    required List<String> possibleAnswers,
-    required String correctAnswer,
+    String? question,
+    List<String>? possibleAnswers,
+    Object? correctAnswer,
   }) = _Question;
 
   factory Question.fromJson(Map<String, dynamic> json) =>

@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:futurama_app/data/models/character/character.dart';
 import 'package:futurama_app/data/models/info/info_model.dart';
+import 'package:futurama_app/data/models/question/question.dart';
 import 'package:futurama_app/utilities/failure.dart';
 import 'package:http/http.dart' as http;
 
@@ -45,6 +47,7 @@ class ApiServices {
     }
   }
 
+  /// This method is responsible for fetching the characters
   Future<List<Character>> getCharacters() async {
     try {
       final url = Uri.parse("https://api.sampleapis.com/futurama/characters");
@@ -63,6 +66,46 @@ class ApiServices {
         }
 
         return characters;
+      } else {
+        throw Failure("Couldn't get data. Please try again");
+      }
+    } on SocketException catch (_) {
+      throw Failure("No internet connection");
+    } on HttpException {
+      throw Failure("Service not currently available");
+    } on TimeoutException catch (_) {
+      throw Failure("Poor internet connection");
+    } on Failure catch (e) {
+      throw Failure(e.message);
+    } on TypeError catch (_) {
+      throw Failure("Data not available at the moment");
+    } catch (e) {
+      throw Failure("Something went wrong. Try again");
+    }
+  }
+
+  Future<List<Question>> getQuestions() async {
+    try {
+      final url = Uri.parse("https://api.sampleapis.com/futurama/questions");
+
+      final response = await _client.get(url).timeout(_timeOutDuration);
+
+      if (response.statusCode >= 200 && response.statusCode <= 304) {
+        final decodedData = jsonDecode(response.body);
+
+        debugPrint("ApiService - getQuestions -- decodedData -> $decodedData");
+
+        List<Question> questions = [];
+
+        for (var data in decodedData) {
+          final question = Question.fromJson(data);
+
+          debugPrint("ApiService - getQuestions -- question -> ${question.toJson()}");
+
+          questions.add(question);
+        }
+
+        return questions;
       } else {
         throw Failure("Couldn't get data. Please try again");
       }
