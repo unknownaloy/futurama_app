@@ -46,9 +46,13 @@ class _HomeScreenState extends State<HomeScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
-                      "Hello there 👋🏿",
-                      style: Theme.of(context).textTheme.displayLarge,
+                    Semantics(
+                      label: "Hello there",
+                      header: true,
+                      child: Text(
+                        "Hello there 👋🏿",
+                        style: Theme.of(context).textTheme.displayLarge,
+                      ),
                     ),
                     const SizedBox(
                       height: 24,
@@ -67,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen>
                     Text(
                       "Year",
                       style: Theme.of(context).textTheme.displayMedium,
+                      semanticsLabel: "Heading, year",
                     ),
 
                     const SizedBox(
@@ -75,10 +80,13 @@ class _HomeScreenState extends State<HomeScreen>
 
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Chip(
-                        label: Text(
-                          data.yearsAired,
-                          style: Theme.of(context).textTheme.labelSmall,
+                      child: Semantics(
+                        label: "Year is ${data.yearsAired}",
+                        child: Chip(
+                          label: Text(
+                            data.yearsAired,
+                            style: Theme.of(context).textTheme.labelSmall,
+                          ),
                         ),
                       ),
                     ),
@@ -91,6 +99,7 @@ class _HomeScreenState extends State<HomeScreen>
                     Text(
                       "Creators",
                       style: Theme.of(context).textTheme.displayMedium,
+                      semanticsLabel: "Creators",
                     ),
                     const SizedBox(
                       height: 8,
