@@ -15,7 +15,7 @@ void main() {
 
   runApp(
     ChangeNotifierProvider(
-      create: (_) => ThemeProvider(),
+      create: (_) => ThemeProvider()..initializeTheme(),
       child: const MyApp(),
     ),
   );
