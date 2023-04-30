@@ -4,6 +4,7 @@ import 'package:futurama_app/presentation/futurama_home.dart';
 import 'package:futurama_app/presentation/home/home_view_model.dart';
 import 'package:futurama_app/presentation/quiz/quiz_view_model.dart';
 import 'package:futurama_app/repositories/api_services.dart';
+import 'package:futurama_app/themes/dark_theme/dark_theme.dart';
 import 'package:futurama_app/themes/light_theme/light_theme.dart';
 import 'package:futurama_app/utilities/service_locator.dart';
 import 'package:provider/provider.dart';
@@ -42,8 +43,8 @@ class MyApp extends StatelessWidget {
         title: 'Futurama App',
         debugShowCheckedModeBanner: false,
         theme: lightTheme(),
-        darkTheme: ThemeData.dark(),
-        themeMode: ThemeMode.light,
+        darkTheme: darkTheme(),
+        themeMode: ThemeMode.dark,
         home: const FuturamaHome(),
       ),
     );

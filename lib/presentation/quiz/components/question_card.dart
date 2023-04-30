@@ -22,7 +22,7 @@ class QuestionCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xff7BC7EF).withOpacity(0.5) : null,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(
+          border: isSelected ? null : Border.all(
             color: Colors.black,
           ),
         ),

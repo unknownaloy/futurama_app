@@ -19,6 +19,7 @@ class _FuturamaHomeState extends State<FuturamaHome> {
     const HomeScreen(),
     const CharactersScreen(),
     const QuizScreen(),
+    Container(color: Colors.orangeAccent,)
   ];
 
   void _handlePageTap(int index) {
@@ -63,6 +64,10 @@ class _FuturamaHomeState extends State<FuturamaHome> {
           BottomNavigationBarItem(
             icon: Icon(Icons.quiz),
             label: "Quiz",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: "Settings",
           ),
         ],
       ),

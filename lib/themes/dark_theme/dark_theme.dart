@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_app/themes/light_theme/light_text_theme.dart';
-import 'package:futurama_app/themes/light_theme/light_theme_text_styles.dart';
+import 'package:futurama_app/themes/dark_theme/dark_text_theme.dart';
 
-ThemeData lightTheme() {
-  return ThemeData.light().copyWith(
+ThemeData darkTheme() {
+  return ThemeData.dark().copyWith(
     appBarTheme: const AppBarTheme(
-      color: Color(0xffEDF0F5),
+      color: Color(0xff8A8A8A),
       elevation: 0.0,
       iconTheme: IconThemeData(
         color: Colors.black,
       ),
     ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    textTheme: kLightTextTheme,
+    textTheme: kDarkTextTheme,
     chipTheme: const ChipThemeData(
       backgroundColor: Color(0xffF2BC8C),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       elevation: 0.0,
       selectedItemColor: Color(0xff7AC7F0),
-      unselectedItemColor: Colors.grey,
-      backgroundColor: Color(0xffEDF0F5),
+      unselectedItemColor: Colors.white,
+      backgroundColor: Color(0xff8A8A8A),
+      // backgroundColor: Color(0xffEDF0F5),
       showSelectedLabels: true,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
@@ -28,7 +28,7 @@ ThemeData lightTheme() {
         color: Color(0xff7AC7F0),
       ),
       unselectedIconTheme: IconThemeData(
-        color: Colors.grey,
+        color: Colors.white,
       ),
     ),
     textButtonTheme: TextButtonThemeData(
@@ -43,11 +43,5 @@ ThemeData lightTheme() {
         ),
       ),
     ),
-
-    // iconTheme: const IconThemeData(color: kWhiteColor),
-    // textButtonTheme: kTextButtonThemeData(),
-    // bottomSheetTheme: kBottomSheetTheme(),
-    // timePickerTheme: const TimePickerThemeData(),
-    // elevatedButtonTheme: kElevatedButtonThemeData(),
   );
 }
