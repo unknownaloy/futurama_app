@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_app/presentation/quiz/components/question_card.dart';
 import 'package:futurama_app/presentation/quiz/quiz_view_model.dart';
+import 'package:futurama_app/presentation/quiz/screens/result_screen.dart';
 import 'package:provider/provider.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -125,8 +126,19 @@ class _QuizScreenState extends State<QuizScreen>
                       onPressed: () {
                         model.checkAnswer(index);
 
-                        if (index == model.quizQuestions.length -1) {
-                          // Navigate to result view
+                        if (index == model.quizQuestions.length - 1) {
+                          // Navigate to the result's screen
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ResultScreen(
+                                onReset: () {
+                                  model.resetQuiz();
+                                  _pageController.jumpToPage(0);
+                                },
+                              ),
+                            ),
+                          );
                           return;
                         }
 

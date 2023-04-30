@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_app/presentation/characters/screens/characters_screen.dart';
 import 'package:futurama_app/presentation/home/home_screen.dart';
-import 'package:futurama_app/presentation/quiz/quiz_screen.dart';
+import 'package:futurama_app/presentation/quiz/screens/quiz_screen.dart';
 
 class FuturamaHome extends StatefulWidget {
   const FuturamaHome({Key? key}) : super(key: key);

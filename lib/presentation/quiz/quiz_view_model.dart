@@ -67,4 +67,11 @@ class QuizViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  void resetQuiz() {
+    _correctAnswer = 0;
+    _selectedAnswers = [];
+
+    notifyListeners();
+  }
 }
