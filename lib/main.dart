@@ -6,13 +6,19 @@ import 'package:futurama_app/presentation/quiz/quiz_view_model.dart';
 import 'package:futurama_app/repositories/api_services.dart';
 import 'package:futurama_app/themes/dark_theme/dark_theme.dart';
 import 'package:futurama_app/themes/light_theme/light_theme.dart';
+import 'package:futurama_app/themes/theme_provider.dart';
 import 'package:futurama_app/utilities/service_locator.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   setupLocator();
 
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -39,13 +45,15 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ],
-      child: MaterialApp(
-        title: 'Futurama App',
-        debugShowCheckedModeBanner: false,
-        theme: lightTheme(),
-        darkTheme: darkTheme(),
-        themeMode: ThemeMode.dark,
-        home: const FuturamaHome(),
+      child: Consumer<ThemeProvider>(
+        builder: (_, model, __) => MaterialApp(
+          title: 'Futurama App',
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme(),
+          darkTheme: darkTheme(),
+          themeMode: model.themeMode,
+          home: const FuturamaHome(),
+        ),
       ),
     );
   }
