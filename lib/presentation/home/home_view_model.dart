@@ -15,7 +15,7 @@ class HomeViewModel extends ChangeNotifier {
 
   Future<void> fetchInfoData() async {
     try {
-      _requestState = const RequestState.idle();
+      _requestState = const RequestState.loading();
 
       final data = await _apiServices.getInfo();
 

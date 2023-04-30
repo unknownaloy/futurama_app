@@ -16,7 +16,7 @@ class CharactersViewModel extends ChangeNotifier {
 
   Future<void> fetchCharacters() async {
     try {
-      _requestState = const RequestState.idle();
+      _requestState = const RequestState.loading();
 
       final data = await _apiServices.getCharacters();
 
