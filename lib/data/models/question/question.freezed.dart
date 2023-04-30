@@ -24,8 +24,6 @@ mixin _$Question {
   String get question => throw _privateConstructorUsedError;
   List<String> get possibleAnswers => throw _privateConstructorUsedError;
   Object get correctAnswer => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: false)
-  bool? get isSelected => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,8 +40,7 @@ abstract class $QuestionCopyWith<$Res> {
       {int id,
       String question,
       List<String> possibleAnswers,
-      Object correctAnswer,
-      @JsonKey(defaultValue: false) bool? isSelected});
+      Object correctAnswer});
 }
 
 /// @nodoc
@@ -63,7 +60,6 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
     Object? question = null,
     Object? possibleAnswers = null,
     Object? correctAnswer = null,
-    Object? isSelected = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -80,10 +76,6 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
               as List<String>,
       correctAnswer:
           null == correctAnswer ? _value.correctAnswer : correctAnswer,
-      isSelected: freezed == isSelected
-          ? _value.isSelected
-          : isSelected // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ) as $Val);
   }
 }
@@ -99,8 +91,7 @@ abstract class _$$_QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
       {int id,
       String question,
       List<String> possibleAnswers,
-      Object correctAnswer,
-      @JsonKey(defaultValue: false) bool? isSelected});
+      Object correctAnswer});
 }
 
 /// @nodoc
@@ -118,7 +109,6 @@ class __$$_QuestionCopyWithImpl<$Res>
     Object? question = null,
     Object? possibleAnswers = null,
     Object? correctAnswer = null,
-    Object? isSelected = freezed,
   }) {
     return _then(_$_Question(
       id: null == id
@@ -135,10 +125,6 @@ class __$$_QuestionCopyWithImpl<$Res>
               as List<String>,
       correctAnswer:
           null == correctAnswer ? _value.correctAnswer : correctAnswer,
-      isSelected: freezed == isSelected
-          ? _value.isSelected
-          : isSelected // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ));
   }
 }
@@ -151,8 +137,7 @@ class _$_Question implements _Question {
       {required this.id,
       required this.question,
       required final List<String> possibleAnswers,
-      required this.correctAnswer,
-      @JsonKey(defaultValue: false) this.isSelected})
+      required this.correctAnswer})
       : _possibleAnswers = possibleAnswers;
 
   factory _$_Question.fromJson(Map<String, dynamic> json) =>
@@ -172,13 +157,10 @@ class _$_Question implements _Question {
 
   @override
   final Object correctAnswer;
-  @override
-  @JsonKey(defaultValue: false)
-  final bool? isSelected;
 
   @override
   String toString() {
-    return 'Question(id: $id, question: $question, possibleAnswers: $possibleAnswers, correctAnswer: $correctAnswer, isSelected: $isSelected)';
+    return 'Question(id: $id, question: $question, possibleAnswers: $possibleAnswers, correctAnswer: $correctAnswer)';
   }
 
   @override
@@ -192,9 +174,7 @@ class _$_Question implements _Question {
             const DeepCollectionEquality()
                 .equals(other._possibleAnswers, _possibleAnswers) &&
             const DeepCollectionEquality()
-                .equals(other.correctAnswer, correctAnswer) &&
-            (identical(other.isSelected, isSelected) ||
-                other.isSelected == isSelected));
+                .equals(other.correctAnswer, correctAnswer));
   }
 
   @JsonKey(ignore: true)
@@ -204,8 +184,7 @@ class _$_Question implements _Question {
       id,
       question,
       const DeepCollectionEquality().hash(_possibleAnswers),
-      const DeepCollectionEquality().hash(correctAnswer),
-      isSelected);
+      const DeepCollectionEquality().hash(correctAnswer));
 
   @JsonKey(ignore: true)
   @override
@@ -226,8 +205,7 @@ abstract class _Question implements Question {
       {required final int id,
       required final String question,
       required final List<String> possibleAnswers,
-      required final Object correctAnswer,
-      @JsonKey(defaultValue: false) final bool? isSelected}) = _$_Question;
+      required final Object correctAnswer}) = _$_Question;
 
   factory _Question.fromJson(Map<String, dynamic> json) = _$_Question.fromJson;
 
@@ -239,9 +217,6 @@ abstract class _Question implements Question {
   List<String> get possibleAnswers;
   @override
   Object get correctAnswer;
-  @override
-  @JsonKey(defaultValue: false)
-  bool? get isSelected;
   @override
   @JsonKey(ignore: true)
   _$$_QuestionCopyWith<_$_Question> get copyWith =>

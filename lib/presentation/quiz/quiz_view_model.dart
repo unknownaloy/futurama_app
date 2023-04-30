@@ -24,7 +24,7 @@ class QuizViewModel extends ChangeNotifier {
 
   Future<void> fetchQuizQuestions() async {
     try {
-      _requestState = const RequestState.idle();
+      _requestState = const RequestState.loading();
 
       _quizQuestions = await _apiServices.getQuestions();
 
@@ -62,6 +62,9 @@ class QuizViewModel extends ChangeNotifier {
   }
 
   void checkAnswer(int index) {
+    if (_selectedAnswers.isEmpty) {
+      return;
+    }
     if (_selectedAnswers[index] == _quizQuestions[index].correctAnswer) {
       _correctAnswer++;
       notifyListeners();

@@ -11,7 +11,6 @@ class Question with _$Question {
     required String question,
     required List<String> possibleAnswers,
     required Object correctAnswer,
-    @JsonKey(defaultValue: false) bool? isSelected,
   }) = _Question;
 
   factory Question.fromJson(Map<String, dynamic> json) =>

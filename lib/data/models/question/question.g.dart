@@ -13,7 +13,6 @@ _$_Question _$$_QuestionFromJson(Map<String, dynamic> json) => _$_Question(
           .map((e) => e as String)
           .toList(),
       correctAnswer: json['correctAnswer'] as Object,
-      isSelected: json['isSelected'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) =>
@@ -22,5 +21,4 @@ Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) =>
       'question': instance.question,
       'possibleAnswers': instance.possibleAnswers,
       'correctAnswer': instance.correctAnswer,
-      'isSelected': instance.isSelected,
     };
