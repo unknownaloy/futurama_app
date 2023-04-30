@@ -16,6 +16,12 @@ class QuizViewModel extends ChangeNotifier {
   List<Question> _quizQuestions = [];
   List<Question> get quizQuestions => [..._quizQuestions];
 
+  int _correctAnswer = 0;
+  int get correctAnswer => _correctAnswer;
+
+  List<String> _selectedAnswers = [];
+  List<String> get selectedAnswer => [..._selectedAnswers];
+
   Future<void> fetchQuizQuestions() async {
     try {
       _requestState = const RequestState.idle();
@@ -26,6 +32,38 @@ class QuizViewModel extends ChangeNotifier {
     } on Failure catch (err) {
       _requestState = RequestState.error(message: err.message);
     } finally {
+      notifyListeners();
+    }
+  }
+
+  void handleAnswerSelection({
+    required int index,
+    required String answer,
+  }) {
+    if ((_selectedAnswers.length - 1) < index) {
+      _selectedAnswers.add(answer);
+      notifyListeners();
+      return;
+    }
+
+    _selectedAnswers[index] = answer;
+    notifyListeners();
+  }
+
+  bool getSelectedAnswer({
+    required int index,
+    required String answer,
+  }) {
+    if (_selectedAnswers.length - 1 >= index) {
+      return _selectedAnswers[index] == answer;
+    }
+
+    return false;
+  }
+
+  void checkAnswer(int index) {
+    if (_selectedAnswers[index] == _quizQuestions[index].correctAnswer) {
+      _correctAnswer++;
       notifyListeners();
     }
   }

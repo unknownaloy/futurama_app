@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_app/themes/light_theme/light_text_theme.dart';
+import 'package:futurama_app/themes/light_theme/light_theme_text_styles.dart';
 
 ThemeData lightTheme() {
   return ThemeData.light().copyWith(
     appBarTheme: const AppBarTheme(
-      color: Color(0xffEDF0F5),
-      elevation: 0.0,
-      iconTheme: IconThemeData(
-        color: Colors.black,
-      )
-      //backgroundColor: kAppbarColor,
-    ),
+        color: Color(0xffEDF0F5),
+        elevation: 0.0,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        )
+        //backgroundColor: kAppbarColor,
+        ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: kLightTextTheme,
     chipTheme: const ChipThemeData(
@@ -31,8 +32,18 @@ ThemeData lightTheme() {
         color: Colors.grey,
       ),
     ),
-
-
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(
+          const Color(0xff3474EF),
+        ),
+        minimumSize: MaterialStateProperty.all(
+          const Size.fromHeight(
+            64,
+          ),
+        ),
+      ),
+    ),
 
     // iconTheme: const IconThemeData(color: kWhiteColor),
     // textButtonTheme: kTextButtonThemeData(),

@@ -8,11 +8,12 @@ part of 'question.dart';
 
 _$_Question _$$_QuestionFromJson(Map<String, dynamic> json) => _$_Question(
       id: json['id'] as int,
-      question: json['question'] as String?,
-      possibleAnswers: (json['possibleAnswers'] as List<dynamic>?)
-          ?.map((e) => e as String)
+      question: json['question'] as String,
+      possibleAnswers: (json['possibleAnswers'] as List<dynamic>)
+          .map((e) => e as String)
           .toList(),
-      correctAnswer: json['correctAnswer'],
+      correctAnswer: json['correctAnswer'] as Object,
+      isSelected: json['isSelected'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) =>
@@ -21,4 +22,5 @@ Map<String, dynamic> _$$_QuestionToJson(_$_Question instance) =>
       'question': instance.question,
       'possibleAnswers': instance.possibleAnswers,
       'correctAnswer': instance.correctAnswer,
+      'isSelected': instance.isSelected,
     };

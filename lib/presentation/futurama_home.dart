@@ -11,7 +11,7 @@ class FuturamaHome extends StatefulWidget {
 }
 
 class _FuturamaHomeState extends State<FuturamaHome> {
-  late PageController _pageController;
+  late final PageController _pageController;
 
   int _selectedIndex = 0;
 

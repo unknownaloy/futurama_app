@@ -21,9 +21,11 @@ Question _$QuestionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Question {
   int get id => throw _privateConstructorUsedError;
-  String? get question => throw _privateConstructorUsedError;
-  List<String>? get possibleAnswers => throw _privateConstructorUsedError;
-  Object? get correctAnswer => throw _privateConstructorUsedError;
+  String get question => throw _privateConstructorUsedError;
+  List<String> get possibleAnswers => throw _privateConstructorUsedError;
+  Object get correctAnswer => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: false)
+  bool? get isSelected => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,9 +40,10 @@ abstract class $QuestionCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String? question,
-      List<String>? possibleAnswers,
-      Object? correctAnswer});
+      String question,
+      List<String> possibleAnswers,
+      Object correctAnswer,
+      @JsonKey(defaultValue: false) bool? isSelected});
 }
 
 /// @nodoc
@@ -57,25 +60,30 @@ class _$QuestionCopyWithImpl<$Res, $Val extends Question>
   @override
   $Res call({
     Object? id = null,
-    Object? question = freezed,
-    Object? possibleAnswers = freezed,
-    Object? correctAnswer = freezed,
+    Object? question = null,
+    Object? possibleAnswers = null,
+    Object? correctAnswer = null,
+    Object? isSelected = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      question: freezed == question
+      question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
-              as String?,
-      possibleAnswers: freezed == possibleAnswers
+              as String,
+      possibleAnswers: null == possibleAnswers
           ? _value.possibleAnswers
           : possibleAnswers // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
       correctAnswer:
-          freezed == correctAnswer ? _value.correctAnswer : correctAnswer,
+          null == correctAnswer ? _value.correctAnswer : correctAnswer,
+      isSelected: freezed == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -89,9 +97,10 @@ abstract class _$$_QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res> {
   @useResult
   $Res call(
       {int id,
-      String? question,
-      List<String>? possibleAnswers,
-      Object? correctAnswer});
+      String question,
+      List<String> possibleAnswers,
+      Object correctAnswer,
+      @JsonKey(defaultValue: false) bool? isSelected});
 }
 
 /// @nodoc
@@ -106,25 +115,30 @@ class __$$_QuestionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? question = freezed,
-    Object? possibleAnswers = freezed,
-    Object? correctAnswer = freezed,
+    Object? question = null,
+    Object? possibleAnswers = null,
+    Object? correctAnswer = null,
+    Object? isSelected = freezed,
   }) {
     return _then(_$_Question(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      question: freezed == question
+      question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
-              as String?,
-      possibleAnswers: freezed == possibleAnswers
+              as String,
+      possibleAnswers: null == possibleAnswers
           ? _value._possibleAnswers
           : possibleAnswers // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
       correctAnswer:
-          freezed == correctAnswer ? _value.correctAnswer : correctAnswer,
+          null == correctAnswer ? _value.correctAnswer : correctAnswer,
+      isSelected: freezed == isSelected
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -135,9 +149,10 @@ class __$$_QuestionCopyWithImpl<$Res>
 class _$_Question implements _Question {
   _$_Question(
       {required this.id,
-      this.question,
-      final List<String>? possibleAnswers,
-      this.correctAnswer})
+      required this.question,
+      required final List<String> possibleAnswers,
+      required this.correctAnswer,
+      @JsonKey(defaultValue: false) this.isSelected})
       : _possibleAnswers = possibleAnswers;
 
   factory _$_Question.fromJson(Map<String, dynamic> json) =>
@@ -146,23 +161,24 @@ class _$_Question implements _Question {
   @override
   final int id;
   @override
-  final String? question;
-  final List<String>? _possibleAnswers;
+  final String question;
+  final List<String> _possibleAnswers;
   @override
-  List<String>? get possibleAnswers {
-    final value = _possibleAnswers;
-    if (value == null) return null;
+  List<String> get possibleAnswers {
     if (_possibleAnswers is EqualUnmodifiableListView) return _possibleAnswers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_possibleAnswers);
   }
 
   @override
-  final Object? correctAnswer;
+  final Object correctAnswer;
+  @override
+  @JsonKey(defaultValue: false)
+  final bool? isSelected;
 
   @override
   String toString() {
-    return 'Question(id: $id, question: $question, possibleAnswers: $possibleAnswers, correctAnswer: $correctAnswer)';
+    return 'Question(id: $id, question: $question, possibleAnswers: $possibleAnswers, correctAnswer: $correctAnswer, isSelected: $isSelected)';
   }
 
   @override
@@ -176,7 +192,9 @@ class _$_Question implements _Question {
             const DeepCollectionEquality()
                 .equals(other._possibleAnswers, _possibleAnswers) &&
             const DeepCollectionEquality()
-                .equals(other.correctAnswer, correctAnswer));
+                .equals(other.correctAnswer, correctAnswer) &&
+            (identical(other.isSelected, isSelected) ||
+                other.isSelected == isSelected));
   }
 
   @JsonKey(ignore: true)
@@ -186,7 +204,8 @@ class _$_Question implements _Question {
       id,
       question,
       const DeepCollectionEquality().hash(_possibleAnswers),
-      const DeepCollectionEquality().hash(correctAnswer));
+      const DeepCollectionEquality().hash(correctAnswer),
+      isSelected);
 
   @JsonKey(ignore: true)
   @override
@@ -205,20 +224,24 @@ class _$_Question implements _Question {
 abstract class _Question implements Question {
   factory _Question(
       {required final int id,
-      final String? question,
-      final List<String>? possibleAnswers,
-      final Object? correctAnswer}) = _$_Question;
+      required final String question,
+      required final List<String> possibleAnswers,
+      required final Object correctAnswer,
+      @JsonKey(defaultValue: false) final bool? isSelected}) = _$_Question;
 
   factory _Question.fromJson(Map<String, dynamic> json) = _$_Question.fromJson;
 
   @override
   int get id;
   @override
-  String? get question;
+  String get question;
   @override
-  List<String>? get possibleAnswers;
+  List<String> get possibleAnswers;
   @override
-  Object? get correctAnswer;
+  Object get correctAnswer;
+  @override
+  @JsonKey(defaultValue: false)
+  bool? get isSelected;
   @override
   @JsonKey(ignore: true)
   _$$_QuestionCopyWith<_$_Question> get copyWith =>
