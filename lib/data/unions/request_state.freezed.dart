@@ -20,7 +20,7 @@ mixin _$RequestState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$RequestState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$RequestState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -124,7 +124,7 @@ class _$_Idle<T> implements _Idle<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String message) error,
   }) {
     return idle();
@@ -135,7 +135,7 @@ class _$_Idle<T> implements _Idle<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String message)? error,
   }) {
     return idle?.call();
@@ -146,7 +146,7 @@ class _$_Idle<T> implements _Idle<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -238,7 +238,7 @@ class _$_Loading<T> implements _Loading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -249,7 +249,7 @@ class _$_Loading<T> implements _Loading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -260,7 +260,7 @@ class _$_Loading<T> implements _Loading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -318,7 +318,7 @@ abstract class _$$_SuccessCopyWith<T, $Res> {
           _$_Success<T> value, $Res Function(_$_Success<T>) then) =
       __$$_SuccessCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({T data});
+  $Res call({T? data});
 }
 
 /// @nodoc
@@ -338,7 +338,7 @@ class __$$_SuccessCopyWithImpl<T, $Res>
       freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
+              as T?,
     ));
   }
 }
@@ -346,10 +346,10 @@ class __$$_SuccessCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$_Success<T> implements _Success<T> {
-  const _$_Success(this.data);
+  const _$_Success([this.data]);
 
   @override
-  final T data;
+  final T? data;
 
   @override
   String toString() {
@@ -379,7 +379,7 @@ class _$_Success<T> implements _Success<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String message) error,
   }) {
     return success(data);
@@ -390,7 +390,7 @@ class _$_Success<T> implements _Success<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String message)? error,
   }) {
     return success?.call(data);
@@ -401,7 +401,7 @@ class _$_Success<T> implements _Success<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -450,9 +450,9 @@ class _$_Success<T> implements _Success<T> {
 }
 
 abstract class _Success<T> implements RequestState<T> {
-  const factory _Success(final T data) = _$_Success<T>;
+  const factory _Success([final T? data]) = _$_Success<T>;
 
-  T get data;
+  T? get data;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<T, _$_Success<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -523,7 +523,7 @@ class _$_Error<T> implements _Error<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() idle,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(T? data) success,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -534,7 +534,7 @@ class _$_Error<T> implements _Error<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(T? data)? success,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -545,7 +545,7 @@ class _$_Error<T> implements _Error<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(T? data)? success,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

@@ -34,43 +34,49 @@ class _CharactersScreenState extends State<CharactersScreen>
         orElse: () => const Center(
           child: CircularProgressIndicator(),
         ),
-        success: (characters) => CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              title: Text(
-                "Characters",
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    final character = characters[index];
-                    return CharacterCard(
-                      id: character.id,
-                      imageUrl: character.characterImage.image,
-                      fullName:
-                          "${character.characterName.first} ${character.characterName.middle} ${character.characterName.last}",
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                CharactersFullScreen(character: character),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  childCount: characters.length,
+        success: (characters) {
+          if (characters == null) {
+            return const Center(child: Text("Data not available"),);
+          }
+
+          return CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                pinned: true,
+                title: Text(
+                  "Characters",
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
-            ),
-          ],
-        ),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                sliver: SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                      final character = characters[index];
+                      return CharacterCard(
+                        id: character.id,
+                        imageUrl: character.characterImage.image,
+                        fullName:
+                        "${character.characterName.first} ${character.characterName.middle} ${character.characterName.last}",
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  CharactersFullScreen(character: character),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    childCount: characters.length,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

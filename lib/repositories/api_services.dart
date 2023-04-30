@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:futurama_app/data/models/character/character.dart';
 import 'package:futurama_app/data/models/info/info_model.dart';
 import 'package:futurama_app/data/models/question/question.dart';
@@ -93,15 +92,10 @@ class ApiServices {
       if (response.statusCode >= 200 && response.statusCode <= 304) {
         final decodedData = jsonDecode(response.body);
 
-        debugPrint("ApiService - getQuestions -- decodedData -> $decodedData");
-
         List<Question> questions = [];
 
         for (var data in decodedData) {
           final question = Question.fromJson(data);
-
-          debugPrint("ApiService - getQuestions -- question -> ${question.toJson()}");
-
           questions.add(question);
         }
 

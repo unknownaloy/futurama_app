@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_app/presentation/characters/screens/characters_screen.dart';
 import 'package:futurama_app/presentation/home/home_screen.dart';
+import 'package:futurama_app/presentation/quiz/quiz_screen.dart';
 
 class FuturamaHome extends StatefulWidget {
   const FuturamaHome({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class _FuturamaHomeState extends State<FuturamaHome> {
   final List<Widget> _widgetOptions = [
     const HomeScreen(),
     const CharactersScreen(),
-    Container(color: Colors.purpleAccent),
+    const QuizScreen(),
   ];
 
   void _handlePageTap(int index) {

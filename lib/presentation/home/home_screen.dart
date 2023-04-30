@@ -34,87 +34,93 @@ class _HomeScreenState extends State<HomeScreen>
           orElse: () => const Center(
             child: CircularProgressIndicator(),
           ),
-          success: (data) => SingleChildScrollView(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    "Hello there 👋🏿",
-                    style: Theme.of(context).textTheme.displayLarge,
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  Text(
-                    data.synopsis,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          height: 1.5,
-                        ),
-                  ),
-                  const SizedBox(
-                    height: 32,
-                  ),
+          success: (data) {
+            if (data == null) {
+              return const Center (child: Text("Data not available"),);
+            }
 
-                  /// Year
-                  Text(
-                    "Year",
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-
-                  const SizedBox(
-                    height: 8,
-                  ),
-
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Chip(
-                      label: Text(
-                        data.yearsAired,
-                        style: Theme.of(context).textTheme.labelSmall,
+            return SingleChildScrollView(
+              child: Padding(
+                padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      "Hello there 👋🏿",
+                      style: Theme.of(context).textTheme.displayLarge,
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    Text(
+                      data.synopsis,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        height: 1.5,
                       ),
                     ),
-                  ),
+                    const SizedBox(
+                      height: 32,
+                    ),
 
-                  const SizedBox(
-                    height: 32,
-                  ),
+                    /// Year
+                    Text(
+                      "Year",
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
 
-                  /// Creators
-                  Text(
-                    "Creators",
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                    const SizedBox(
+                      height: 8,
+                    ),
 
-                  Wrap(
-                    spacing: 8.0, // gap between adjacent chips
-                    runSpacing: 4.0, // gap between lines
-                    children: [
-                      ...data.creators.map(
-                        (creator) => GestureDetector(
-                          onTap: () {
-                            // Handle url launcher here
-                            _launchUrl(creator.url);
-                          },
-                          child: Chip(
-                            label: Text(
-                              creator.name,
-                              style: Theme.of(context).textTheme.labelSmall,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Chip(
+                        label: Text(
+                          data.yearsAired,
+                          style: Theme.of(context).textTheme.labelSmall,
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(
+                      height: 32,
+                    ),
+
+                    /// Creators
+                    Text(
+                      "Creators",
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+
+                    Wrap(
+                      spacing: 8.0, // gap between adjacent chips
+                      runSpacing: 4.0, // gap between lines
+                      children: [
+                        ...data.creators.map(
+                              (creator) => GestureDetector(
+                            onTap: () {
+                              // Handle url launcher here
+                              _launchUrl(creator.url);
+                            },
+                            child: Chip(
+                              label: Text(
+                                creator.name,
+                                style: Theme.of(context).textTheme.labelSmall,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ),
     );
