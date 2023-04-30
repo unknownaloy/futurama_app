@@ -53,21 +53,37 @@ class _FuturamaHomeState extends State<FuturamaHome> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => _handlePageTap(index),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Semantics(
+              label: "An icon for navigating to the home screen",
+              enabled: _selectedIndex == 0,
+              child: const Icon(Icons.home),
+            ),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.category),
+            icon: Semantics(
+              label: "An icon for navigating to the characters screen",
+              enabled: _selectedIndex == 1,
+              child: const Icon(Icons.category),
+            ),
             label: "Characters",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.quiz),
+            icon: Semantics(
+              label: "An icon for navigating to the quiz screen",
+              enabled: _selectedIndex == 2,
+              child: const Icon(Icons.quiz),
+            ),
             label: "Quiz",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Semantics(
+              label: "An icon for navigating to the settings screen",
+              enabled: _selectedIndex == 3,
+              child: const Icon(Icons.settings),
+            ),
             label: "Settings",
           ),
         ],
