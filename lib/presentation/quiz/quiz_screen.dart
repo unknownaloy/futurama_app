@@ -38,6 +38,5 @@ class _QuizScreenState extends State<QuizScreen>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }
