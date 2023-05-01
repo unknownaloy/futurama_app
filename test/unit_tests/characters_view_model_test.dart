@@ -39,7 +39,8 @@ void main() {
   }
 
   test("Test that initial values are correct", () {
-    expect(sut.requestState, const RequestState<List<Character>>.idle());
+    expect(sut.requestState, const RequestState.idle());
+    expect(sut.characters, []);
   });
 
   group("fetchCharacters", () {
@@ -55,10 +56,11 @@ void main() {
     indicates that the data is not being loaded anymore""", () async {
       initializeCharacterViewModelWithData();
       final future = sut.fetchCharacters();
-      expect(sut.requestState, const RequestState<List<Character>>.loading());
+      expect(sut.requestState, const RequestState.loading());
       await future;
 
-      expect(sut.requestState, RequestState.success(characterData));
+      expect(sut.requestState, const RequestState.success());
+      expect(sut.characters, characterData);
     });
   });
 }

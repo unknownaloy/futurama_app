@@ -10,17 +10,19 @@ class CharactersViewModel extends ChangeNotifier {
   CharactersViewModel({required ApiServices apiServices})
       : _apiServices = apiServices;
 
-  RequestState<List<Character>> _requestState =
-      const RequestState<List<Character>>.idle();
-  RequestState<List<Character>> get requestState => _requestState;
+  RequestState _requestState = const RequestState.idle();
+  RequestState get requestState => _requestState;
+
+  List<Character> _characters = [];
+  List<Character> get characters => [..._characters];
 
   Future<void> fetchCharacters() async {
     try {
       _requestState = const RequestState.loading();
 
-      final data = await _apiServices.getCharacters();
+      _characters = await _apiServices.getCharacters();
 
-      _requestState = RequestState.success(data);
+      _requestState = const RequestState.success();
     } on Failure catch (err) {
       _requestState = RequestState.error(message: err.message);
     } finally {

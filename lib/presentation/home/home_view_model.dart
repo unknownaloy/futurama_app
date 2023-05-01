@@ -10,16 +10,19 @@ class HomeViewModel extends ChangeNotifier {
   HomeViewModel({required ApiServices apiServices})
       : _apiServices = apiServices;
 
-  RequestState<InfoModel> _requestState = const RequestState<InfoModel>.idle();
-  RequestState<InfoModel> get requestState => _requestState;
+  RequestState _requestState = const RequestState.idle();
+  RequestState get requestState => _requestState;
+
+  InfoModel? _infoData;
+  InfoModel? get infoData => _infoData;
 
   Future<void> fetchInfoData() async {
     try {
       _requestState = const RequestState.loading();
 
-      final data = await _apiServices.getInfo();
+      _infoData = await _apiServices.getInfo();
 
-      _requestState = RequestState<InfoModel>.success(data);
+      _requestState = const RequestState.success();
     } on Failure catch (err) {
       _requestState = RequestState.error(message: err.message);
     } finally {

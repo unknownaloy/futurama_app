@@ -49,7 +49,7 @@ class _QuizScreenState extends State<QuizScreen>
         orElse: () => const Center(
           child: CircularProgressIndicator(),
         ),
-        success: (data) => Scaffold(
+        success: () => Scaffold(
           appBar: AppBar(
             title: Text(
               "Quiz",

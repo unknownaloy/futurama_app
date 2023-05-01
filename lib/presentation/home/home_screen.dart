@@ -36,8 +36,8 @@ class _HomeScreenState extends State<HomeScreen>
           orElse: () => const Center(
             child: CircularProgressIndicator(),
           ),
-          success: (data) {
-            if (data == null) {
+          success: () {
+            if (model.infoData == null) {
               return CustomRefreshWidget(
                 message: "Data not available",
                 onRefresh: () => model.fetchInfoData(),
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen>
                       height: 24,
                     ),
                     Text(
-                      data.synopsis,
+                      model.infoData!.synopsis,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             height: 1.5,
                           ),
@@ -88,10 +88,10 @@ class _HomeScreenState extends State<HomeScreen>
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Semantics(
-                        label: "Year is ${data.yearsAired}",
+                        label: "Year is ${model.infoData!.yearsAired}",
                         child: Chip(
                           label: Text(
-                            data.yearsAired,
+                            model.infoData!.yearsAired,
                             style: Theme.of(context).textTheme.labelSmall,
                           ),
                         ),
@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen>
                       spacing: 8.0, // gap between adjacent chips
                       runSpacing: 4.0, // gap between lines
                       children: [
-                        ...data.creators.map(
+                        ...model.infoData!.creators.map(
                           (creator) => GestureDetector(
                             onTap: () {
                               // Handle url launcher here

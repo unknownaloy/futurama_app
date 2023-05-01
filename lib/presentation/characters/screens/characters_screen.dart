@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:futurama_app/presentation/characters/characters_view_model.dart';
 import 'package:futurama_app/presentation/characters/components/character_card.dart';
 import 'package:futurama_app/presentation/characters/screens/characters_full_screen.dart';
+import 'package:futurama_app/reusables/custom_refresh_widget.dart';
 import 'package:provider/provider.dart';
 
 class CharactersScreen extends StatefulWidget {
@@ -28,16 +29,19 @@ class _CharactersScreenState extends State<CharactersScreen>
         loading: () => const Center(
           child: CircularProgressIndicator(),
         ),
-        error: (message) => Center(
-          child: Text(message),
+        error: (message) => CustomRefreshWidget(
+          message: message,
+          onRefresh: () => model.fetchCharacters(),
         ),
         orElse: () => const Center(
           child: CircularProgressIndicator(),
         ),
-        success: (characters) {
-          if (characters == null) {
-            return const Center(
-              child: Text("Data not available"),
+        success: () {
+          final characters = model.characters;
+          if (characters.isEmpty) {
+            return CustomRefreshWidget(
+              message: "Data not available",
+              onRefresh: () => model.fetchCharacters(),
             );
           }
 

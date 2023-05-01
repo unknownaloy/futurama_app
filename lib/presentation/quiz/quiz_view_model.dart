@@ -7,8 +7,9 @@ import 'package:futurama_app/utilities/failure.dart';
 class QuizViewModel extends ChangeNotifier {
   final ApiServices _apiServices;
 
-  QuizViewModel({required ApiServices apiServices})
-      : _apiServices = apiServices;
+  QuizViewModel({
+    required ApiServices apiServices,
+  }) : _apiServices = apiServices;
 
   RequestState _requestState = const RequestState.idle();
   RequestState get requestState => _requestState;

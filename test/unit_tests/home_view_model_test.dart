@@ -37,6 +37,7 @@ void main() {
 
   test("Test that initial values are correct", () {
     expect(sut.requestState, const RequestState.idle());
+    expect(sut.infoData, null);
   });
 
   group("fetchInfoData", () {
@@ -52,10 +53,11 @@ void main() {
     indicates that the data is not being loaded anymore""", () async {
       initialHomeViewModelWithData();
       final future = sut.fetchInfoData();
-      expect(sut.requestState, const RequestState<InfoModel>.loading());
+      expect(sut.requestState, const RequestState.loading());
       await future;
 
-      expect(sut.requestState, RequestState.success(infoData));
+      expect(sut.requestState, const RequestState.success());
+      expect(sut.infoData, infoData);
     });
   });
 }
