@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_app/presentation/home/home_view_model.dart';
 import 'package:futurama_app/reusables/custom_refresh_widget.dart';
+import 'package:futurama_app/utilities/url_launcher_handler.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -119,8 +119,7 @@ class _HomeScreenState extends State<HomeScreen>
                         ...model.infoData!.creators.map(
                           (creator) => GestureDetector(
                             onTap: () {
-                              // Handle url launcher here
-                              _launchUrl(creator.url);
+                              UrlLauncherHandler.launchUrlHandler(creator.url);
                             },
                             child: Chip(
                               label: Text(
@@ -144,18 +143,4 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   bool get wantKeepAlive => true;
-}
-
-// TODO: Move to a util class
-Future<void> _launchUrl(String url) async {
-  final Uri uri = Uri.parse(url);
-
-  try {
-    if (!await launchUrl(uri)) {
-      throw Exception('Could not launch');
-    }
-  } catch (err) {
-    // Handle error
-    print("ERR => $err");
-  }
 }
