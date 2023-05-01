@@ -24,7 +24,7 @@ class CharacterCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -32,19 +32,19 @@ class CharacterCard extends StatelessWidget {
                 tag: id,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: CachedNetworkImage(
-                    progressIndicatorBuilder: (_, __, ___) => AspectRatio(
-                      aspectRatio: 3/4,
-                      child: Container(
+                  child: AspectRatio(
+                    aspectRatio: 3 / 4,
+                    child: CachedNetworkImage(
+                      progressIndicatorBuilder: (_, __, ___) => Container(
                         color: Colors.grey,
                       ),
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.error_outline,
+                        color: Colors.redAccent,
+                      ),
+                      imageUrl: imageUrl,
+                      fit: BoxFit.contain,
                     ),
-                    errorWidget: (context, url, error) => const Icon(
-                      Icons.error_outline,
-                      color: Colors.redAccent,
-                    ),
-                    imageUrl: imageUrl,
-                    fit: BoxFit.contain,
                   ),
                 ),
               ),

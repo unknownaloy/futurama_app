@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_app/presentation/characters/characters_view_model.dart';
-import 'package:futurama_app/presentation/characters/components/character_card.dart';
-import 'package:futurama_app/presentation/characters/screens/characters_full_screen.dart';
+import 'package:futurama_app/presentation/characters/components/character_mobile_view.dart';
+import 'package:futurama_app/presentation/characters/components/character_tablet_view.dart';
 import 'package:futurama_app/reusables/custom_refresh_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -54,36 +54,14 @@ class _CharactersScreenState extends State<CharactersScreen>
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
-              SliverPadding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                sliver: SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      final character = characters[index];
-                      return Semantics(
-                        label:
-                            "Image of ${character.characterName.first} ${character.characterName.middle} ${character.characterName.last}",
-                        child: CharacterCard(
-                          id: character.id,
-                          imageUrl: character.characterImage.image,
-                          fullName:
-                              "${character.characterName.first} ${character.characterName.middle} ${character.characterName.last}",
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    CharactersFullScreen(character: character),
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    },
-                    childCount: characters.length,
-                  ),
-                ),
+              SliverLayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.crossAxisExtent < 600) {
+                    return CharacterMobileView(characters: characters);
+                  }
+
+                  return CharacterTabletView(characters: characters);
+                },
               ),
             ],
           );
