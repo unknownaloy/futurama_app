@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_app/presentation/home/home_view_model.dart';
+import 'package:futurama_app/reusables/custom_refresh_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -28,21 +29,27 @@ class _HomeScreenState extends State<HomeScreen>
           loading: () => const Center(
             child: CircularProgressIndicator(),
           ),
-          error: (message) => Center(
-            child: Text(message),
+          error: (message) => CustomRefreshWidget(
+            message: message,
+            onRefresh: () => model.fetchInfoData(),
           ),
           orElse: () => const Center(
             child: CircularProgressIndicator(),
           ),
           success: (data) {
             if (data == null) {
-              return const Center (child: Text("Data not available"),);
+              return CustomRefreshWidget(
+                message: "Data not available",
+                onRefresh: () => model.fetchInfoData(),
+              );
             }
 
             return SingleChildScrollView(
               child: Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 24.0,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -60,8 +67,8 @@ class _HomeScreenState extends State<HomeScreen>
                     Text(
                       data.synopsis,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        height: 1.5,
-                      ),
+                            height: 1.5,
+                          ),
                     ),
                     const SizedBox(
                       height: 32,
@@ -110,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen>
                       runSpacing: 4.0, // gap between lines
                       children: [
                         ...data.creators.map(
-                              (creator) => GestureDetector(
+                          (creator) => GestureDetector(
                             onTap: () {
                               // Handle url launcher here
                               _launchUrl(creator.url);
@@ -139,7 +146,6 @@ class _HomeScreenState extends State<HomeScreen>
   bool get wantKeepAlive => true;
 }
 
-
 // TODO: Move to a util class
 Future<void> _launchUrl(String url) async {
   final Uri uri = Uri.parse(url);
@@ -153,6 +159,3 @@ Future<void> _launchUrl(String url) async {
     print("ERR => $err");
   }
 }
-
-
-
