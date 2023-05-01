@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:futurama_app/themes/light_theme/light_text_theme.dart';
-import 'package:futurama_app/themes/light_theme/light_theme_text_styles.dart';
 
 ThemeData lightTheme() {
   return ThemeData.light().copyWith(
@@ -37,17 +37,11 @@ ThemeData lightTheme() {
           const Color(0xff3474EF),
         ),
         minimumSize: MaterialStateProperty.all(
-          const Size.fromHeight(
-            64,
+          Size.fromHeight(
+            64.h,
           ),
         ),
       ),
     ),
-
-    // iconTheme: const IconThemeData(color: kWhiteColor),
-    // textButtonTheme: kTextButtonThemeData(),
-    // bottomSheetTheme: kBottomSheetTheme(),
-    // timePickerTheme: const TimePickerThemeData(),
-    // elevatedButtonTheme: kElevatedButtonThemeData(),
   );
 }

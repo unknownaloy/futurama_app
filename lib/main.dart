@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:futurama_app/presentation/characters/characters_view_model.dart';
 import 'package:futurama_app/presentation/futurama_home.dart';
 import 'package:futurama_app/presentation/home/home_view_model.dart';
@@ -9,7 +10,6 @@ import 'package:futurama_app/themes/light_theme/light_theme.dart';
 import 'package:futurama_app/themes/theme_provider.dart';
 import 'package:futurama_app/utilities/service_locator.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   setupLocator();
@@ -47,22 +47,18 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: Consumer<ThemeProvider>(
-        builder: (_, model, __) => MaterialApp(
-          builder: (context, child) => ResponsiveBreakpoints.builder(
-            child: child!,
-            breakpoints: [
-              const Breakpoint(start: 0, end: 450, name: MOBILE),
-              const Breakpoint(start: 451, end: 800, name: TABLET),
-              const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-              const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-            ],
+        builder: (_, model, __) => ScreenUtilInit(
+          designSize: const Size(428, 926),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, child) => MaterialApp(
+            title: 'Futurama App',
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme(),
+            darkTheme: darkTheme(),
+            themeMode: model.themeMode,
+            home: const FuturamaHome(),
           ),
-          title: 'Futurama App',
-          debugShowCheckedModeBanner: false,
-          theme: lightTheme(),
-          darkTheme: darkTheme(),
-          themeMode: model.themeMode,
-          home: const FuturamaHome(),
         ),
       ),
     );
