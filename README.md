@@ -6,7 +6,7 @@ Futurama App is an app built using flutter that that interacts with the Futurama
 - [👉🏼 Download and Install the Futurama App](https://github.com/unknownaloy/futurama_app/raw/main/apk/futurama_app.apk)
 
 ## Prerequisites
-- Ensure you have the Flutter SDK installed on your machine. You can download it from [👉🏼 here](https://docs.flutter.dev/get-started/install)
+- Ensure you have the Flutter SDK installed on your machine. You can download it from [here](https://docs.flutter.dev/get-started/install)
 - Ensure you have an IDE installed, such as [Android Studio](https://developer.android.com/studio), [Visual Studio Code](https://code.visualstudio.com/download) or [IntelliJ IDEA](https://www.jetbrains.com/idea/download/)
 
 ## Getting Started
