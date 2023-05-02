@@ -19,7 +19,7 @@
     </queries>
 
    <application
-        android:label="futurama_app"
+        android:label="Futurama App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -66,7 +66,8 @@ class QuizViewModel extends ChangeNotifier {
     if (_selectedAnswers.isEmpty) {
       return;
     }
-    if (_selectedAnswers[index] == _quizQuestions[index].correctAnswer) {
+    if (_selectedAnswers[index] ==
+        _quizQuestions[index].correctAnswer.toString()) {
       _correctAnswer++;
       notifyListeners();
     }
