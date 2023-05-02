@@ -69,6 +69,7 @@ class CharactersFullScreen extends StatelessWidget {
                           Text(
                             "Biography:",
                             style: Theme.of(context).textTheme.displayMedium,
+                            semanticsLabel: 'Biography',
                           ),
                           const SizedBox(
                             height: 16,
@@ -88,28 +89,37 @@ class CharactersFullScreen extends StatelessWidget {
                                   ),
                                   Align(
                                     alignment: Alignment.centerRight,
-                                    child: Chip(
-                                      label: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text(
-                                            character.gender.value,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium
-                                                ?.copyWith(
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Icon(
-                                            character.gender == Gender.male
-                                                ? Icons.male
-                                                : Icons.female,
-                                          ),
-                                        ],
+                                    child: Semantics(
+                                      label: character.gender.value,
+                                      child: Chip(
+                                        label: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              character.gender.value,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Semantics(
+                                              label: character.gender ==
+                                                      Gender.male
+                                                  ? 'Male gender icon'
+                                                  : 'Female gender icon',
+                                              child: Icon(
+                                                character.gender == Gender.male
+                                                    ? Icons.male
+                                                    : Icons.female,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -126,24 +136,27 @@ class CharactersFullScreen extends StatelessWidget {
                                   ),
                                   Align(
                                     alignment: Alignment.centerRight,
-                                    child: Chip(
-                                      label: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text(
-                                            character.species,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium
-                                                ?.copyWith(
-                                                  fontWeight: FontWeight.w600,
-                                                ),
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          const Icon(Icons.person_4_outlined),
-                                        ],
+                                    child: Semantics(
+                                      label: character.species,
+                                      child: Chip(
+                                        label: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              character.species,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium
+                                                  ?.copyWith(
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            const Icon(Icons.person_4_outlined),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -162,25 +175,28 @@ class CharactersFullScreen extends StatelessWidget {
                                         ),
                                         Align(
                                           alignment: Alignment.centerRight,
-                                          child: Chip(
-                                            label: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Text(
-                                                  character.homePlanet!,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium
-                                                      ?.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                const Icon(Icons.language),
-                                              ],
+                                          child: Semantics(
+                                            label: character.homePlanet!,
+                                            child: Chip(
+                                              label: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text(
+                                                    character.homePlanet!,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium
+                                                        ?.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  const Icon(Icons.language),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -221,29 +237,32 @@ class CharactersFullScreen extends StatelessWidget {
                                         },
                                         child: Align(
                                           alignment: Alignment.centerRight,
-                                          child: Chip(
-                                            label: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Flexible(
-                                                  child: Text(
-                                                    character.occupation,
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyMedium
-                                                        ?.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
+                                          child: Semantics(
+                                            label: character.occupation,
+                                            child: Chip(
+                                              label: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      character.occupation,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .bodyMedium
+                                                          ?.copyWith(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                    ),
                                                   ),
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                const Icon(
-                                                  Icons.construction_outlined,
-                                                ),
-                                              ],
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  const Icon(
+                                                    Icons.construction_outlined,
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),

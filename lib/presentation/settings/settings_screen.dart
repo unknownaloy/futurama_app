@@ -20,34 +20,41 @@ class SettingsScreen extends StatelessWidget {
         builder: (_, model, __) => Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Theme Mode",
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                const SizedBox(
-                  height: 32,
-                ),
-                ThemeTile(
-                  label: "System",
-                  isSelected: model.themeMode == ThemeMode.system,
-                  onSelected: () => model.updateThemeMode(ThemeMode.system),
-                ),
-                ThemeTile(
-                  label: "Light",
-                  isSelected: model.themeMode == ThemeMode.light,
-                  onSelected: () => model.updateThemeMode(ThemeMode.light),
-                ),
-                ThemeTile(
-                  label: "Dark",
-                  isSelected: model.themeMode == ThemeMode.dark,
-                  onSelected: () => model.updateThemeMode(ThemeMode.dark),
-                ),
-              ],
+            child: Semantics(
+              label: 'Theme Mode Options',
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Semantics(
+                    label: "Theme Mode",
+                    header: true,
+                    child: Text(
+                      "Theme Mode",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 32,
+                  ),
+                  ThemeTile(
+                    label: "System",
+                    isSelected: model.themeMode == ThemeMode.system,
+                    onSelected: () => model.updateThemeMode(ThemeMode.system),
+                  ),
+                  ThemeTile(
+                    label: "Light",
+                    isSelected: model.themeMode == ThemeMode.light,
+                    onSelected: () => model.updateThemeMode(ThemeMode.light),
+                  ),
+                  ThemeTile(
+                    label: "Dark",
+                    isSelected: model.themeMode == ThemeMode.dark,
+                    onSelected: () => model.updateThemeMode(ThemeMode.dark),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -51,9 +51,13 @@ class _QuizScreenState extends State<QuizScreen>
         ),
         success: () => Scaffold(
           appBar: AppBar(
-            title: Text(
-              "Quiz",
-              style: Theme.of(context).textTheme.bodyLarge,
+            title: Semantics(
+              label: "Quiz",
+              header: true,
+              child: Text(
+                "Quiz",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
             ),
           ),
           body: PageView.builder(
@@ -77,13 +81,22 @@ class _QuizScreenState extends State<QuizScreen>
                               Theme.of(context).textTheme.titleLarge?.copyWith(
                                     color: const Color(0xffF2BC8C),
                                   ),
+                          semanticsLabel: "Question ${index + 1}",
                         ),
-                        Text(
-                          "Score: ${model.correctAnswer}/${model.quizQuestions.length}",
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
-                                    color: const Color(0xffF2BC8C),
-                                  ),
+                        Semantics(
+                          label:
+                              'Score: ${model.correctAnswer} out of ${model.quizQuestions.length}',
+                          value:
+                              'Score: ${model.correctAnswer} out of ${model.quizQuestions.length}',
+                          child: Text(
+                            "Score: ${model.correctAnswer}/${model.quizQuestions.length}",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  color: const Color(0xffF2BC8C),
+                                ),
+                          ),
                         ),
                       ],
                     ),
@@ -91,9 +104,14 @@ class _QuizScreenState extends State<QuizScreen>
                     const SizedBox(
                       height: 16,
                     ),
-                    Text(
-                      question.question,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                    Semantics(
+                      label: question.question,
+                      readOnly: true,
+                      textDirection: TextDirection.ltr,
+                      child: Text(
+                        question.question,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
                     ),
                     const SizedBox(
                       height: 40,

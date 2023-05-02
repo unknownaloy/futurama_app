@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen>
                     Text(
                       "Year",
                       style: Theme.of(context).textTheme.displayMedium,
-                      semanticsLabel: "Heading, year",
+                      semanticsLabel: "Year heading",
                     ),
 
                     const SizedBox(
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen>
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Semantics(
-                        label: "Year is ${model.infoData!.yearsAired}",
+                        label: "Aired from ${model.infoData!.yearsAired}",
                         child: Chip(
                           label: Text(
                             model.infoData!.yearsAired,
@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen>
                     Text(
                       "Creators",
                       style: Theme.of(context).textTheme.displayMedium,
-                      semanticsLabel: "Creators",
+                      semanticsLabel: "Creators heading",
                     ),
                     const SizedBox(
                       height: 8,
@@ -117,14 +117,17 @@ class _HomeScreenState extends State<HomeScreen>
                       runSpacing: 4.0, // gap between lines
                       children: [
                         ...model.infoData!.creators.map(
-                          (creator) => GestureDetector(
-                            onTap: () {
-                              UrlLauncherHandler.launchUrlHandler(creator.url);
-                            },
-                            child: Chip(
-                              label: Text(
-                                creator.name,
-                                style: Theme.of(context).textTheme.labelSmall,
+                          (creator) => Semantics(
+                            label: "Creator name: ${creator.name}",
+                            child: GestureDetector(
+                              onTap: () {
+                                UrlLauncherHandler.launchUrlHandler(creator.url);
+                              },
+                              child: Chip(
+                                label: Text(
+                                  creator.name,
+                                  style: Theme.of(context).textTheme.labelSmall,
+                                ),
                               ),
                             ),
                           ),

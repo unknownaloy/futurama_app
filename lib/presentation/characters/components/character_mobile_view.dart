@@ -25,6 +25,7 @@ class CharacterMobileView extends StatelessWidget {
             return Semantics(
               label:
                   "Image of ${character.characterName.first} ${character.characterName.middle} ${character.characterName.last}",
+              image: true,
               child: CharacterCard(
                 id: character.id,
                 imageUrl: character.characterImage.image,

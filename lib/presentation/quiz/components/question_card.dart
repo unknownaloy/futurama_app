@@ -26,28 +26,32 @@ class QuestionCard extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        child: ListTile(
-          leading: Container(
-            padding: const EdgeInsets.all(4),
-            alignment: Alignment.center,
-            height: 24,
-            width: 24,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-              border: isSelected ? null : Border.all(color: Colors.black),
-              color: isSelected ? const Color(0xff3474EF) : null,
+        child: Semantics(
+          label: possibleAnswer,
+          selected: isSelected,
+          child: ListTile(
+            leading: Container(
+              padding: const EdgeInsets.all(4),
+              alignment: Alignment.center,
+              height: 24,
+              width: 24,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100),
+                border: isSelected ? null : Border.all(color: Colors.black),
+                color: isSelected ? const Color(0xff3474EF) : null,
+              ),
+              child: isSelected
+                  ? const Icon(
+                      Icons.check,
+                      size: 16,
+                      color: Colors.white,
+                    )
+                  : null,
             ),
-            child: isSelected
-                ? const Icon(
-                    Icons.check,
-                    size: 16,
-                    color: Colors.white,
-                  )
-                : null,
-          ),
-          title: Text(
-            possibleAnswer,
-            style: Theme.of(context).textTheme.bodyMedium,
+            title: Text(
+              possibleAnswer,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ),
         ),
       ),
