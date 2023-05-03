@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:futurama_app/presentation/characters/characters_view_model.dart';
 import 'package:futurama_app/presentation/futurama_home.dart';
@@ -11,7 +14,13 @@ import 'package:futurama_app/themes/theme_provider.dart';
 import 'package:futurama_app/utilities/service_locator.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  ByteData data = await PlatformAssetBundle().load('assets/ca/isrgrootx1.pem');
+  SecurityContext.defaultContext
+      .setTrustedCertificatesBytes(data.buffer.asUint8List());
+
   setupLocator();
 
   runApp(

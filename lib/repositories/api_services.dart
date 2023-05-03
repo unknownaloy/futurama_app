@@ -41,7 +41,7 @@ class ApiServices {
       throw Failure(e.message);
     } on TypeError catch (_) {
       throw Failure("Data not available at the moment");
-    } catch (e) {
+    } catch (_) {
       throw Failure("Something went wrong. Try again");
     }
   }
@@ -78,11 +78,13 @@ class ApiServices {
       throw Failure(e.message);
     } on TypeError catch (_) {
       throw Failure("Data not available at the moment");
-    } catch (e) {
+    } catch (_) {
       throw Failure("Something went wrong. Try again");
     }
   }
 
+
+  /// This method is responsible for fetching the quiz questions
   Future<List<Question>> getQuestions() async {
     try {
       final url = Uri.parse("https://api.sampleapis.com/futurama/questions");
@@ -113,7 +115,7 @@ class ApiServices {
       throw Failure(e.message);
     } on TypeError catch (_) {
       throw Failure("Data not available at the moment");
-    } catch (e) {
+    } catch (_) {
       throw Failure("Something went wrong. Try again");
     }
   }
